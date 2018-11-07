@@ -1,0 +1,135 @@
+{
+    "prob_drop_for_low_engagement": 0.2, 
+    "correctness_obs": [
+        "R", 
+        "W"
+    ], 
+    "prob_correct_answer_after_1_attempt": [
+        0.15, 
+        0.33, 
+        0.6, 
+        0.9
+    ], 
+    "prob_speeds_for_high_engagement": [
+        0.05, 
+        0.9, 
+        0.05
+    ], 
+    "prob_speeds_for_low_engagement": [
+        0.25, 
+        0.5, 
+        0.25
+    ], 
+    "action_prob_engagement_gain_mult": [
+        1.0, 
+        1.0, 
+        1.0, 
+        1.0, 
+        2.6, 
+        2.9
+    ], 
+    "prob_engagement_gain": [
+        0.33, 
+        0.33, 
+        0.33, 
+        0.33
+    ], 
+    "prob_knowledge_gain": [
+        0.001, 
+        0.02
+    ], 
+    "reward_for_first_attempt_actions": -1000, 
+    "knowledge_states": [
+        "K0", 
+        "K1", 
+        "K2", 
+        "K3"
+    ], 
+    "engagement_reward": 20, 
+    "discount": 0.85, 
+    "actions": [
+        "no-action", 
+        "interactive-tutorial", 
+        "worked-example", 
+        "hint", 
+        "think-aloud", 
+        "break"
+    ], 
+    "knowledge_reward": 80, 
+    "action_speed_multipliers": [
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ], 
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ], 
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ], 
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ], 
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ], 
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ]
+    ], 
+    "prob_correct_answer": [
+        0.25, 
+        0.5, 
+        0.8, 
+        0.95
+    ], 
+    "action_prob_knowledge_gain_mult": [
+        1.0, 
+        9.9, 
+        7.5, 
+        6.0, 
+        2.5, 
+        1.0
+    ], 
+    "end_state_remain_reward": 0, 
+    "attempt_states": [
+        "A0r", 
+        "A0w", 
+        "A1", 
+        "A2"
+    ], 
+    "speed_obs": [
+        "slow", 
+        "med", 
+        "fast"
+    ], 
+    "prob_engagement_loss": [
+        0.1, 
+        0.05, 
+        0.02, 
+        0.01
+    ], 
+    "engagement_states": [
+        "E0", 
+        "E1"
+    ], 
+    "action_rewards": [
+        0, 
+        -8, 
+        -3, 
+        -1, 
+        -1, 
+        -2
+    ]
+}
