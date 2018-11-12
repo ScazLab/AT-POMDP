@@ -31,7 +31,6 @@ def generate_observation_matrix(knowledge_states, engagement_states, attempt_sta
     state_to_obs_matrix = np.zeros((num_states, num_observations))
 
 
-    #RE-DO initial state_to_obs_matrix with new attempt state added in
     for i in range(num_states):
         end_state_knowledge_index = i / (num_engagement_levels * num_attempts)
         end_state_engagement_index = (i - (end_state_knowledge_index * num_engagement_levels * num_attempts)) / num_attempts
@@ -115,58 +114,6 @@ def generate_sample_student_obs(all_states, observations, observation_matrix, st
 
 
 
-if __name__ == "__main__": 
-
-    param_file = "control_student_logfiles/03_13_B.json"
-    with open(param_file) as data_file:
-            params = json.load(data_file)
-
-    # state variables
-    knowledge_states = params["knowledge_states"]
-    engagement_states = params["engagement_states"]
-    attempt_states = params["attempt_states"]
-    all_states = combine_states_to_one_list(knowledge_states, engagement_states, attempt_states)
-
-    correctness_obs = params["correctness_obs"]
-    speed_obs = params["speed_obs"]
-    all_obs = combine_obs_types_to_one_list(correctness_obs, speed_obs)
-
-    # action variables
-    actions = params["actions"]
-
-    #probabilities associated with observation matrix
-    prob_speeds_for_low_engagement = params["prob_speeds_for_low_engagement"]
-    prob_speeds_for_high_engagement = params["prob_speeds_for_high_engagement"]
-    action_speed_multipliers = np.array(params["action_speed_multipliers"])
-    
-    #for each action, use this multiplier for slow, med, fast
-    #action_speed_multipliers = np.array(
-    #    [[1.1, 1.8, 1.1], #no-action
-    #    [1.2, 1.7, 1.1],  #interactive-tutorial
-    #    [1.3, 1.6, 1.1],  #worked-example 
-    #    [1.1, 1.6, 1.3],  #hint
-    #    [1.1, 1.8, 1.1],  #think-aloud
-    #    [1.1, 1.7, 1.2]]  #break
-    #)
-
-    O = generate_observation_matrix(knowledge_states=knowledge_states, 
-                                    engagement_states=engagement_states,
-                                    attempt_states=attempt_states,
-                                    correctness_obs=correctness_obs,
-                                    speed_obs=speed_obs,
-                                    num_actions=len(actions),
-                                    prob_speeds_for_low_engagement=prob_speeds_for_low_engagement,
-                                    prob_speeds_for_high_engagement=prob_speeds_for_high_engagement,
-                                    action_speed_multipliers=action_speed_multipliers)
-    
-    print O
-    
-    # sample_observation = generate_sample_student_obs(all_states=all_states,
-    #                                                 observations=all_obs,
-    #                                                 observation_matrix=O,
-    #                                                 state="K1-E0-A1",
-    #                                                 current_action_index=5)
-    #print sample_observation
 
 
 
