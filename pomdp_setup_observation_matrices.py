@@ -40,14 +40,14 @@ def generate_observation_matrix(knowledge_states, engagement_states, attempt_sta
             obs_index = j / len(speed_obs)
             if obs_index < 1:
                 if j%len(speed_obs) == 1:
-                    state_to_obs_matrix[i][j] = prob_right #* .8 #med speed is the most likely
+                    state_to_obs_matrix[i][j] = prob_right
                 else:
-                    state_to_obs_matrix[i][j] = prob_right #* .1
+                    state_to_obs_matrix[i][j] = prob_right
             else:
                 if j%len(speed_obs) == 1:
-                    state_to_obs_matrix[i][j] = prob_wrong #* .8
+                    state_to_obs_matrix[i][j] = prob_wrong
                 else:
-                    state_to_obs_matrix[i][j] = prob_wrong #* .1
+                    state_to_obs_matrix[i][j] = prob_wrong
 
 
     #amend the likelihood of different speeds based on engagement
