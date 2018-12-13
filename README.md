@@ -18,4 +18,14 @@ This subsection describes all of the variables in the parameter file ([atpomdp_p
 
 ### State Space, Action Space, and Observation Space
 
-The state space has 3 dimensions: knowledge level (`"knowledge_states`), engagement level (`"engagement_states"`), and attempt number (`"attempt_states"`). Since there are 4 knowledge levels, 2 engagement states (low and high), and 4 attempt states (attempt 1 after getting a problem right, attempt 1 after getting a problem right, attempt 2, attempt 3) there are a total of 4 x 2 x 4 = 32 possible states. 
+The state space has 3 dimensions: knowledge level (`"knowledge_states"`), engagement level (`"engagement_states"`), and attempt number (`"attempt_states"`). Since there are 4 knowledge levels, 2 engagement states (low and high), and 4 attempt states (attempt 1 after getting a problem right, attempt 1 after getting a problem right, attempt 2, attempt 3) there are a total of 4 x 2 x 4 = 32 possible states.
+
+The action space consists of 6 possible tutoring actions `"actions": ["no-action", "interactive-tutorial", "worked-example", "hint", "think-aloud", "break"]`.
+
+The observation space has 2 dimensions: attempt correctness (`"correctness_obs"`) - right or wrong, and attempt speed (`"speed_obs"`) - slow, medium, or fast. The observation space has a size of 3 x 2 = 6. 
+
+### Computing the Reward Matrix
+
+### Computing the Transition Matrix
+
+### Computing the Observation Matrix
