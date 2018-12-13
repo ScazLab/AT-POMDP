@@ -13,3 +13,9 @@ If you are using this software or one of its components, we recommend that you c
 ## File-by-File Details
 
 ## Computing Model Parameters from the JSON File
+
+This subsection describes all of the variables in the parameter file ([atpomdp_params.json](https://github.com/ScazLab/AT-POMDP/blob/master/atpomdp_params.json)) and how they combine to compute the POMDP model parameters. 
+
+### State Space, Action Space, and Observation Space
+
+The state space has 3 dimensions: knowledge level (`"knowledge_states`), engagement level (`"engagement_states"`), and attempt number (`"attempt_states"`). Since there are 4 knowledge levels, 2 engagement states (low and high), and 4 attempt states (attempt 1 after getting a problem right, attempt 1 after getting a problem right, attempt 2, attempt 3) there are a total of 4 x 2 x 4 = 32 possible states. 
