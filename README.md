@@ -26,6 +26,15 @@ The observation space has 2 dimensions: attempt correctness (`"correctness_obs"`
 
 ### Computing the Reward Matrix
 
+The reward function is represnted by a matrix with 4 dimensions: start state (*t*), end state (*t+1*), action, and observation. With this matrix representation we can reward transitions between states. We compute the reward matrix in the `generate_reward_matrix()` function in [pomdp_setup_reward_transition_matrices.py](https://github.com/ScazLab/AT-POMDP/blob/master/pomdp_setup_reward_transition_matrices.py). 
+
+There are 5 parameters in our JSON file that influence the computation of this reward matrix: 
+- `"reward_for_first_attempt_actions"`: If the start state is one of the attempt 1 states, we set the reward of taking any action other than "no-action" as -1000 to ensure that our POMDP never chooses any action other than "no-action" for the first attempt. This allows the 5th grade student to make a first attempt on a math problem before receiving help from the system. 
+- `"engagement_reward"`: Any time engagement state changes from the start state to the end state, the engagement reward is applied to that transition, this applies for both gains and losses in engagement. 
+- `"knowledge_reward"`: Any time engagement state changes from the start state to the end state, the engagement reward is applied to that transition, this applies only to gains in knowledge, since our model doesn't allow loss of knowledge (transitions from higher to lower knowledge states). 
+- `"action_rewards"`: Each action has a certain cost associated with it. This cost is derived from how long each help action takes for the student and the robot to complete. 
+- `"end_state_remain_reward"`: This reward value is the one given for states with the highest possible engagement and knowledge. Once students have reached the highest possible engagement and knowledge, we do not reward them further. 
+
 ### Computing the Transition Matrix
 
 ### Computing the Observation Matrix
