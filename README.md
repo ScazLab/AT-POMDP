@@ -26,7 +26,7 @@ The observation space has 2 dimensions: attempt correctness (`"correctness_obs"`
 
 ### Computing the Reward Matrix
 
-The reward function is represnted by a matrix with 4 dimensions: start state (*t*), end state (*t+1*), action, and observation. With this matrix representation we can reward transitions between states. We compute the reward matrix in the `generate_reward_matrix()` function in [pomdp_setup_reward_transition_matrices.py](https://github.com/ScazLab/AT-POMDP/blob/master/pomdp_setup_reward_transition_matrices.py). 
+The reward function is represnted by a matrix with 4 dimensions: start state (*s*), end state (*s'*), action, and observation. With this matrix representation we can reward transitions between states. We compute the reward matrix in the `generate_reward_matrix()` function in [pomdp_setup_reward_transition_matrices.py](https://github.com/ScazLab/AT-POMDP/blob/master/pomdp_setup_reward_transition_matrices.py). 
 
 There are 5 parameters in our JSON file that influence the computation of this reward matrix: 
 - `"reward_for_first_attempt_actions"`: If the start state is one of the attempt 1 states, we set the reward of taking any action other than "no-action" as -1000 to ensure that our POMDP never chooses any action other than "no-action" for the first attempt. This allows the 5th grade student to make a first attempt on a math problem before receiving help from the system. 
@@ -37,4 +37,25 @@ There are 5 parameters in our JSON file that influence the computation of this r
 
 ### Computing the Transition Matrix
 
+The transition function is represnted by a matrix with 3 dimensions: start state (*t*), end state (*t+1*), and action. We compute the transition matrix in the `generate_transition_matrix()` function in [pomdp_setup_reward_transition_matrices.py](https://github.com/ScazLab/AT-POMDP/blob/master/pomdp_setup_reward_transition_matrices.py). 
+
+Each transition from the start state to end state taking a specified action is calculated according to the following formula: 
+>Pr(*s'*|*s*,*a*) = Pr(*s<sub>k</sub>*'|*s*,*a*)) x Pr(*s<sub>e</sub>*'|*s*,*a*)) x Pr(*s<sub>a</sub>*'|*s*,*a*))
+Where *s<sub>k</sub>* represents the knowledge dimension of the state, *s<sub>e</sub>* represents the engagement dimension of the state, and *s<sub>a</sub>* represents the attempt dimension of the state. 
+
 ### Computing the Observation Matrix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
