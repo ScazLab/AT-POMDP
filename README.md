@@ -39,9 +39,9 @@ There are 5 parameters in our JSON file that influence the computation of this r
 
 The transition function is represnted by a matrix with 3 dimensions: start state (*t*), end state (*t+1*), and action. We compute the transition matrix in the `generate_transition_matrix()` function in [pomdp_setup_reward_transition_matrices.py](https://github.com/ScazLab/AT-POMDP/blob/master/pomdp_setup_reward_transition_matrices.py). 
 
-Each transition from the start state to end state taking a specified action is calculated according to the following formula: 
->Pr(*s'*|*s*,*a*) = Pr(*s<sub>k</sub>*'|*s*,*a*)) x Pr(*s<sub>e</sub>*'|*s*,*a*)) x Pr(*s<sub>a</sub>*'|*s*,*a*))
-Where *s<sub>k</sub>* represents the knowledge dimension of the state, *s<sub>e</sub>* represents the engagement dimension of the state, and *s<sub>a</sub>* represents the attempt dimension of the state. 
+Each transition from the start state to end state taking a specified action is calculated according to the following formula: Pr(*s'*|*s*,*a*) = Pr(*s<sub>k</sub>*'|*s*,*a*)) x Pr(*s<sub>e</sub>*'|*s*,*a*)) x Pr(*s<sub>a</sub>*'|*s*,*a*)), where *s<sub>k</sub>* represents the knowledge dimension of the state, *s<sub>e</sub>* represents the engagement dimension of the state, and *s<sub>a</sub>* represents the attempt dimension of the state. 
+
+In order to compute Pr(*s<sub>k</sub>*'|*s*,*a*)), the probability of the transition from state *s* with action *a* to the knowledge level of state *s'* (*s<sub>k</sub>*'), we multiply the `"prob_knowledge_gain"` (the probablility the student will transition from a lower to higher knowledge state, given their engagement level in *s*) by the `"action_prob_knowledge_gain_mult"` of action *a* (a multiplier that makes transitions to higher knowledge levels more likely if the help action is more helpful with the information it gives). For each knowledge level separating *s* from *s'*, this quantity is exponentiated. For example, if *s* is at knowledge level 1 and *s'* is at knowledge level 3, the quantity would be squared. Finally, as mentioned before, transitions to lower knolwedge states in *s'* from *s* are not allowed, since we assume that knowledge cannot be lost.  
 
 ### Computing the Observation Matrix
 
