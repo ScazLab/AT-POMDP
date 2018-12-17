@@ -9,7 +9,7 @@ If you are using this software or one of its components, we recommend that you c
 ## Prerequisites and Dependencies
 This subsection describes what needs to be set up prior to being able to run the code used to generate AT-POMDP. The requirements are listed below:
 - Install `numpy`. 
-- The python code in this repository will look for the `pomdp-solve` executable in your `$PATH`. The POMDP solver used to create AT-POMDP was originally implemented by Kaelbling, Littman, and Cassandra (1998) and was modified by Roncone, Mangin, and Scassellati (2017). Please refer to their instructions on installing this executable by visiting `https://github.com/scazlab/task-models#prerequisites-for-using-the-pomdp-solvers`, reading the section titled "Prerequisites for using the POMDP solvers", and utilizing the code they reference at `https://github.com/scazlab/pomdp-solve`.
+- The python code in this repository will look for the `pomdp-solve` executable in your `$PATH`. The POMDP solver used to create AT-POMDP was originally implemented by Kaelbling, Littman, and Cassandra (1998) and was modified by Roncone, Mangin, and Scassellati (2017). Please refer to their [instructions](https://github.com/scazlab/task-models#prerequisites-for-using-the-pomdp-solvers) on installing this executable by reading the section titled "Prerequisites for using the POMDP solvers" and utilizing the code they reference at (https://github.com/scazlab/pomdp-solve).
 
 ## File-by-File Details
 A description of each of the files in the top-level directory is listed below: 
