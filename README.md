@@ -1,16 +1,29 @@
 # AT-POMDP
 
-The Assistive Tutor POMDP (AT-POMDP) developed by Aditi Ramachandran and Sarah Strohkorb Sebo, was designed to select appropriate tutoring actions to support 5th grade students in a one-on-one tutoring interaction with a Nao robot on the topic of long-division mathemtaics. 
+The Assistive Tutor POMDP (AT-POMDP) developed by Aditi Ramachandran and Sarah Strohkorb Sebo, was designed to select appropriate tutoring actions to support 5th grade students in a one-on-one tutoring interaction with a Nao robot on the topic of long-division mathematics. 
 
 If you are using this software or one of its components, we recommend that you cite the paper in which we present the AT-POMDP and its evaluation with 5th grade students:
 
 > Aditi Ramachandran, Sarah Strohkorb Sebo, Brian Scassellati (2019). Personalized Robot Tutoring using the Assistive Tutor POMDP (AT-POMDP). In *Proceedings of The Thirty-Third AAAI Conference on Artificial Intelligence (AAAI 2019)*. Honolulu, HI, USA. [PDF](https://scazlab.yale.edu/sites/default/files/files/Ramachandran_Sebo_AAAI_2018.pdf)
 
 ## Prerequisites and Dependencies
-
-## Usage
+This subsection describes what needs to be set up prior to being able to run the code used to generate AT-POMDP. The requirements are listed below:
+- Install `numpy`. 
+- The python code in this repository will look for the `pomdp-solve` executable in your `$PATH`. The POMDP solver used to create AT-POMDP was originally implemented by Kaelbling, Littman, and Cassandra (1998) and was modified by Roncone, Mangin, and Scassellati (2017). Please refer to their instructions on installing this executable by visiting `https://github.com/scazlab/task-models#prerequisites-for-using-the-pomdp-solvers`, reading the section titled "Prerequisites for using the POMDP solvers", and utilizing the code they reference at `https://github.com/scazlab/pomdp-solve`.
 
 ## File-by-File Details
+A description of each of the files in the top-level directory is listed below: 
+- `atpomdp_params.json` -  This file contains all of the parameter choices used in creating AT-POMDP. This file is provided as a command line argument when running `command_line_demo.py`.
+- `command_line_demo.py` - This python script contains code to: 
+    1. Parse parameters from the parameter input file 
+    2. Call functions to create the individual matrices (reward, transition, and observation) required to build AT-POMDP. The functions called are defined in `pomdp_setup_reward_transition_matrices.py` and `pomdp_setup_observation_matrices.py` to generate these matrices based on the input parameters.
+    3. Create the AT-POMDP model and solve for AT-POMDP's policy
+    4. Execute AT-POMDP's policy in an interactive command line demo in which a user can enter student observations and see which action AT-POMDP selects.
+- `pomdp_setup_observation_matrices.py` - This python file contains the code to build the observation matrix used in the creation of AT-POMDP.
+- `python_setup_reward_transition_matrices.py` - This python file contains the code to build the reward and transition matrices used in the creation of AT-POMDP.
+
+## Usage
+For an interactive demo on how AT-POMDP can be used, run `python command_line_demo.py atpomdp_params.json`. This script will execute the code to generate AT-POMDP's policy and allows the user to input valid observations to see the actions that AT-POMDP selects along with the changing belief state. Valid observations are formatted as follows: `{"R-slow", "R-med", "R-fast", "W-slow", "W-med", "W-fast"}`. These observations encapsulate whether the student answered the attempt right ("R") or wrong ("W") and whether their speed on the attempt was slow, medium, or fast ("slow", "med", "fast"). When the user is done entering observations, they can enter "done" to exit the command line demo. The demo is designed to show how AT-POMDP was used in the scenario developed for 5th grade students and shows the action selected by AT-POMDP for problems that each have 3 attempts.
 
 ## Computing Model Parameters from the JSON File
 
