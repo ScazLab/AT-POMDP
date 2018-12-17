@@ -17,7 +17,7 @@ A description of each of the files in the top-level directory is listed below:
 2.  `command_line_demo.py` - This python script contains code to: 
     * Parse parameters from the parameter input file 
     * Call functions to create the individual matrices (reward, transition, and observation) required to build AT-POMDP. The functions called are defined in `pomdp_setup_reward_transition_matrices.py` and `pomdp_setup_observation_matrices.py` to generate these matrices based on the input parameters.
-    * Create the AT-POMDP model and solve for AT-POMDP's policy
+    * Create the AT-POMDP model and solve for AT-POMDP's policy.
     * Execute AT-POMDP's policy in an interactive command line demo in which a user can enter student observations and see which action AT-POMDP selects.
 3. `pomdp_setup_observation_matrices.py` - This python file contains the code to build the observation matrix used in the creation of AT-POMDP.
 4. `python_setup_reward_transition_matrices.py` - This python file contains the code to build the reward and transition matrices used in the creation of AT-POMDP.
