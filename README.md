@@ -9,13 +9,15 @@ If you are using this software or one of its components, we recommend that you c
 ## Prerequisites and Dependencies
 This subsection describes what needs to be set up prior to being able to run the code used to generate AT-POMDP. The requirements are listed below:
 - Install `numpy`. 
-- The python code in this repository will look for the `pomdp-solve` executable in your `$PATH`. The POMDP solver used to create AT-POMDP was originally implemented by Kaelbling, Littman, and Cassandra (1998) and was modified by Roncone, Mangin, and Scassellati (2017). Please refer to their [instructions](https://github.com/scazlab/task-models#prerequisites-for-using-the-pomdp-solvers) on installing this executable by reading the section titled "Prerequisites for using the POMDP solvers" and utilizing the code they reference at (https://github.com/scazlab/pomdp-solve).
+- The python code in this repository will look for the `pomdp-solve` executable in your `$PATH`. The POMDP solver used to create AT-POMDP was originally implemented by Kaelbling, Littman, and Cassandra (1998) and was modified by Roncone, Mangin, and Scassellati (2017). Please refer to their [instructions](https://github.com/scazlab/task-models#prerequisites-for-using-the-pomdp-solvers) on installing this executable by reading the section titled "Prerequisites for using the POMDP solvers" and utilizing the code they reference at (https://github.com/scazlab/pomdp-solve). If you are using their modified solver, we recommend that you cite their paper:
+
+> Roncone Alessandro, Mangin Olivier, Scassellati Brian (2017). Transparent Role Assignment and Task Allocation in Human Robot Collaboration. *IEEE International Conference on Robotics and Automation (ICRA 2017)*, Singapore. [PDF](https://scazlab.yale.edu/sites/default/files/files/icra17.pdf)
 
 ## File-by-File Details
 A description of each of the files in the top-level directory is listed below: 
 1. `atpomdp_params.json` -  This file contains all of the parameter choices used in creating AT-POMDP. This file is provided as a command line argument when running `command_line_demo.py`.
 2.  `command_line_demo.py` - This python script contains code to: 
-    * Parse parameters from the parameter input file 
+    * Parse parameters from the parameter input file. 
     * Call functions to create the individual matrices (reward, transition, and observation) required to build AT-POMDP. The functions called are defined in `pomdp_setup_reward_transition_matrices.py` and `pomdp_setup_observation_matrices.py` to generate these matrices based on the input parameters.
     * Create the AT-POMDP model and solve for AT-POMDP's policy.
     * Execute AT-POMDP's policy in an interactive command line demo in which a user can enter student observations and see which action AT-POMDP selects.
